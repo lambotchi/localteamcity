@@ -1,5 +1,6 @@
 package _Root
 
+import _Root.buildTypes.*
 import _Root.vcsRoots.*
 import _Root.vcsRoots.HttpsGithubComLambotchiLocalteamcityGit
 import jetbrains.buildServer.configs.kotlin.v10.*
@@ -16,13 +17,19 @@ object Project : Project({
 
     vcsRoot(HttpsGithubComLambotchiLocalteamcityGit)
 
+    template(DeployContainerToQa)
+    template(DeployToStaging)
+    template(DeployContainerToProd)
+    template(DeployContainerToDev)
+    template(GradleBuild)
+
     features {
         versionedSettings {
             id = "PROJECT_EXT_1"
             mode = VersionedSettings.Mode.ENABLED
-            buildSettingsMode = VersionedSettings.BuildSettingsMode.PREFER_SETTINGS_FROM_VCS
+            buildSettingsMode = VersionedSettings.BuildSettingsMode.USE_CURRENT_SETTINGS
             rootExtId = HttpsGithubComLambotchiLocalteamcityGit.extId
-            showChanges = false
+            showChanges = true
             settingsFormat = VersionedSettings.Format.KOTLIN
         }
     }
