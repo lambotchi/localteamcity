@@ -14,4 +14,8 @@ object Project : Project({
     vcsRoot(SpringBootRest1_HttpsGithubComLambotchiSpringBootRest1gitRefsHeadsMaster)
 
     buildType(SpringBootRest1_Build)
+
+    params {
+        param("t1", "")
+    }
 })
