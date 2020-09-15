@@ -13,5 +13,5 @@ object Project : Project({
 
     vcsRoot(Tvf_App)
 
-    buildType(Tvf_Tvf)
+    buildType(Tvf_GradleBuild)
 })

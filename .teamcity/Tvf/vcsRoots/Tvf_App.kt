@@ -9,6 +9,7 @@ object Tvf_App : GitVcsRoot({
     name = "app"
     url = "ssh://git@bitbucket.webbfontaine.com:7999/grails-app/tvf.git"
     branch = "refs/heads/devel"
+    branchSpec = "+:refs/heads/(devel)"
     useTagsAsBranches = true
     authMethod = uploadedKey {
         uploadedKey = "local_teamcity_lem.pem"

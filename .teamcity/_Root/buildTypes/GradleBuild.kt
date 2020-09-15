@@ -10,14 +10,23 @@ object GradleBuild : Template({
     extId = "GradleBuild"
     name = "Gradle build"
 
+    params {
+        password("system.wfRepoPassword", "zxxf8125410e9c897aaf35dd15efe3b879d", label = "Nexus Username", description = "Nexus Password for repo.wfgmb.com", display = ParameterDisplay.HIDDEN)
+        text("system.wfRepoUsername", "developer", label = "Nexus username", description = "Nexus username for repo.wfgmb.com", display = ParameterDisplay.HIDDEN, allowEmpty = true)
+    }
+
     steps {
         gradle {
             name = "Gradle build"
             id = "RUNNER_2"
             tasks = "clean assemble"
+            gradleParams = """-DwfRepoUsername=%system.wfRepoUsername% 
+-DwfRepoPassword=%system.wfRepoPassword%"""
             useGradleWrapper = true
+            enableDebug = true
             enableStacktrace = true
-            jdkHome = "%env.JDK_18_x64%"
+            jvmArgs = """-Dsun.jnu.encoding=UTF8 
+-Dfile.encoding=UTF8"""
         }
     }
 })

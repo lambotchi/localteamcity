@@ -19,6 +19,7 @@ object Project : Project({
 
     template(DeployContainerToQa)
     template(DeployToStaging)
+    template(DockerBuild)
     template(DeployContainerToProd)
     template(DeployContainerToDev)
     template(GradleBuild)
